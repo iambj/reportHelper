@@ -1,0 +1,190 @@
+* {
+  box-sizing: border-box;
+  font-family: Helvetica, Arial;
+  letter-spacing: 1.1px;
+}
+html {
+  background: #C4DAF8;
+  background-image: url('../images/glow.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+#banner {
+  width: 1126px;
+  margin: 20px auto 0 auto;
+  text-align: center;
+}
+#title {
+  font-size: 18px;
+  background-image: url('../images/banner.png');
+  width: 1130px;
+  height: 44px;
+  text-align: left;
+  color: #FFFFFF;
+  margin: 8px auto 0 auto;
+  padding: 14px 0 0 20px;
+  font-weight: 100;
+  clear: both;
+  letter-spacing: 1.1px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+#title p {
+  margin: 0;
+}
+#main {
+  width: 1090px;
+  margin: auto;
+  font-size: 12px;
+  color: #183357;
+}
+#main #forms {
+  width: 940px;
+  margin: 65px auto 0;
+  border-top: 1px solid rgba(24, 51, 87, 0.5);
+  position: relative;
+}
+#main #forms ul {
+  width: 100%;
+  list-style: none;
+  display: block;
+}
+#main #forms ul li {
+  font-size: 14px;
+  position: relative;
+  float: left;
+  width: 50%;
+  height: 40px;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+#main #forms ul li input,
+#main #forms ul li select,
+#main #forms ul li button {
+  width: 55%;
+  position: absolute;
+  right: 70px;
+  top: 1px;
+  background-color: rgba(24, 51, 87, 0.15);
+  border: none;
+  border-radius: 3px;
+  padding: 6px 0 5px 10px;
+  font-size: 15px;
+  color: #183357;
+  transition: box-shadow 0.25s;
+}
+#main #forms ul li input:focus,
+#main #forms ul li select:focus,
+#main #forms ul li button:focus {
+  box-shadow: 0px 0px 3px #4F83CC;
+}
+#main #forms #wtf {
+  text-align: center;
+}
+#main #forms #submit {
+  border-radius: 15px;
+  border: 1px solid #4F83CC;
+  background-color: rgba(79, 131, 204, 0.75);
+  padding: 13px 25px 10px 25px;
+  clear: both;
+  margin: 40px 0 10px 0;
+  width: 150px;
+  font-size: 20px;
+  color: white;
+  font-weight: 200;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+#main #forms #submit:hover {
+  background-color: #4f83cc;
+}
+#main #forms #formTitle {
+  position: absolute;
+  top: -20px;
+  left: 15px;
+  font-weight: 800;
+  font-size: 14px;
+}
+#footer {
+  margin: 10px 0 0 0;
+  font-size: 10px;
+  text-align: center;
+}
+#fetch {
+  border-radius: 15px;
+  border: 1px solid #4F83CC;
+  background-color: rgba(79, 131, 204, 0.75);
+  padding: 13px 25px 10px 25px;
+  clear: both;
+  width: 200px;
+  font-size: 20px;
+  color: white;
+  font-weight: 200;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+#fetch:hover {
+  background-color: #4f83cc;
+}
+#resetList {
+  height: 130px;
+  position: relative;
+  padding: 10px;
+  margin: 10px 0 0 0;
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+#resetList #resetsTitle {
+  background-color: #4F83CC;
+  height: 18px;
+  color: white;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  border: 1px solid white;
+}
+#resetList #resetsTitle .cell {
+  line-height: 18px;
+  padding: 0;
+  opacity: 1;
+}
+#resetList > div.row {
+  display: table-row;
+  margin: 15px;
+  height: 20px;
+  border: 1px solid white;
+}
+#resetList > div.row:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#resetList > div.row > div.cell {
+  display: table-cell;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+#resetList > div.row > div.cell:first-child {
+  width: 5%;
+}
+#holder {
+  margin: 10px 0 10px 0;
+}
+#submitRes {
+  display: none;
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 50px;
+}
+.refreshing {
+  text-align: center;
+  width: 500px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  margin-left: -250px;
+}
+#errors {
+  height: 400px;
+}
