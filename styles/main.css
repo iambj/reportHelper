@@ -233,3 +233,21 @@ html {
   background: linear-gradient(#4F83CC, #2e5ea0);
   cursor: pointer;
 }
+#clear {
+  height: 30px;
+  width: 60px;
+  border-radius: 20px;
+  border: 1px solid #4F83CC;
+  background-color: #4F83CC;
+  background: linear-gradient(#4F83CC, #234779);
+  color: white;
+  font-size: 14px;
+  font-family: Arial;
+  font-weight: bold;
+  margin-left: 110px;
+}
+#clear:hover {
+  background-color: #4F83CC;
+  background: linear-gradient(#4F83CC, #2e5ea0);
+  cursor: pointer;
+}

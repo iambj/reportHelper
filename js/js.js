@@ -32,7 +32,7 @@ var defTholds = {
   ITDC	:	null,
   UIL	:	null,
   USK	:	null,
-  UNKNOWN	:	0.2,
+  UNKNOWN   :   0.2,
   VAULT	:	0.1,
   VRF	:	0.05
 }
@@ -48,7 +48,7 @@ for(var p in defTholds){
 //Gets the values from the array of strings of error % (data)
 //Modifies global vals associative array.
 function data2array(d){
-  for(var i = 0; i < d.length-1; i++){
+  for(var i = 0; i < d.length; i++){
     error = getErr(d[i].trim());
     val = getVal(d[i].trim());
     vals[error] = val;
@@ -81,30 +81,39 @@ function printBoth(data, tholds){
                     html += " no threshold";
                     html += " but high error rate";
                 }else{
-                    html += 'ERROR ' + i + " ==> %" + data[i].trim();
+                    html += 'ERROR ' + i + " ==> " + data[i].trim() + "%";
                 }
                     html += "</span>";
             }else if(data[i] >= (tholds[i])){
                 html += "<span style='background-color: yellow'>";
-                html += "ERROR " + i + " ==> %" + data[i].trim();
+                html += "ERROR " + i + " ==> " + data[i].trim() + "%";
                 html += "</span>";
                 html += " (" + tholds[i] + "% threshold)";
             }else{
-                html += "ERROR " + i + " ==> %" + data[i].trim();
+                html += "ERROR " + i + " ==> " + data[i].trim() + "%";
             }
                 html += "<br />";
         }
     }
     res.innerHTML += html;
-    _select("resultsHidden").value = html;
-    dataSelect();
+    //_select("resultsHidden").value = html;
+    //dataSelect();
 }
 
 
 
 function formatBtn(){
+    dataArr = [];
+    data = null;
+    vals = [];
     //grab data from the input
     data = _select("errors").value;
+
+
+    if(!data){
+        console.log("kill");
+        return;
+    }
     //get rid of the crap we don't need (formatting)
     //-ERROR, -%, -==>
     data = data.replace(/ERROR/g, "").replace(/\=\=\>/g, "").replace(/\%/g ,"");
@@ -132,4 +141,19 @@ function dataSelect(){
     res.select();
     window.clipboardData.setData('text/html');
     document.execCommand("copy");
+}
+
+//the input event is amazing. where has it been?? and how did I miss it?
+_select("errors").addEventListener("input" , autoFormat);
+
+function autoFormat(){
+    _select("results").innerHTML = "";
+    formatBtn()
+}
+
+_select("clear").addEventListener("click" , clearResults);
+
+function clearResults(){
+    _select("results").innerHTML = "";
+    _select("errors").value = "";
 }
