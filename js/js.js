@@ -1,7 +1,7 @@
 ////////////////
 /*TODO:
--no last space in data (when pasting into textarea)
-- fix spaces   percents
+- no last space in data (when pasting into textarea)
+x fix spaces   percents
 
 ////
 */
@@ -45,14 +45,6 @@ for(var p in defTholds){
     }
 }
 
-//DELETE?
-//helper function..
-function compare(d){
-  for(var n in tholds){
-    document.write("matched: " + d + " with " + n);
-  }
- }
-
 //Gets the values from the array of strings of error % (data)
 //Modifies global vals associative array.
 function data2array(d){
@@ -77,66 +69,67 @@ function getVal(v){
 //Main printing function.
 //Prints out the finalised list, ready for email.
 function printBoth(data, tholds){
+    res = document.getElementById("results")
+    res.innerHTML = "";
     html = "";
     for(var i in data){
         if(data.hasOwnProperty(i)){
           //document.write(i + "<br />");
             if(tholds[i] == null){
                 if(data[i] >= 100){
-                    html += '<span style="background-color: yellow">ERROR ' + i + " ==> %" + data[i];
-                    document.write(" no threshold")
-                    document.write(" but high error rate")
+                    html += '<span style="background-color: yellow">ERROR ' + i + " ==> %" + data[i].trim();
+                    html += " no threshold";
+                    html += " but high error rate";
                 }else{
-                    document.write('ERROR ' + i + " ==> %" + data[i]);
+                    html += 'ERROR ' + i + " ==> %" + data[i].trim();
                 }
-                    document.write("</span>");
-            }else if(data[i] > (tholds[i])){
-                document.write("<span style='background-color: yellow'>");
-                document.write("ERROR " + i + " ==> %" + data[i]);
-                document.write("</span>");
-                document.write(" (" + tholds[i] + "% threshold)");
+                    html += "</span>";
+            }else if(data[i] >= (tholds[i])){
+                html += "<span style='background-color: yellow'>";
+                html += "ERROR " + i + " ==> %" + data[i].trim();
+                html += "</span>";
+                html += " (" + tholds[i] + "% threshold)";
             }else{
-                document.write("ERROR " + i + " ==> %" + data[i]);
+                html += "ERROR " + i + " ==> %" + data[i].trim();
             }
-                document.write("<br />");
+                html += "<br />";
         }
     }
-    res = document.getElementById("results")
     res.innerHTML += html;
+    _select("resultsHidden").value = html;
+    dataSelect();
 }
 
 
 
 function formatBtn(){
     //grab data from the input
-    data = document.getElementById("errors").value;
+    data = _select("errors").value;
     //get rid of the crap we don't need (formatting)
     //-ERROR, -%, -==>
     data = data.replace(/ERROR/g, "").replace(/\=\=\>/g, "").replace(/\%/g ,"");
     dataArr = data.split("\n");
-
     data2array(dataArr);
-
     printBoth(vals, defTholds);
-    console.log("Ran.");
+}
+//Bind the button to the function.
+_select("format").addEventListener("click", formatBtn);
+
+//select and cache an object on the page by ID.
+// returns the object it found or null;
+function _select(sel){
+    obj = document.getElementById(sel);
+    if(!obj){
+        obj = "No DOM element found.";
+    }
+    return obj;
 }
 
 
-//Bind the button to the function.
-//jQuery needs to go away.
-$("#format").click(function(e){
 
-   formatBtn()
-});
-
-
-///Helper function to just document.write
-// providing TRUE as the second parameter appends a line break.
-function _p(i, br){
-  var lb = br || false;
-  if(lb == true){
-    document.write(i + "<br />");
-  }else{
-    document.write(i);
-  }
+function dataSelect(){
+    res = _select("resultsHidden");
+    res.select();
+    window.clipboardData.setData('text/html');
+    document.execCommand("copy");
 }
