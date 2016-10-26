@@ -48,17 +48,20 @@ for(var p in defTholds){
 //Gets the values from the array of strings of error % (data)
 //Modifies global vals associative array.
 function data2array(d){
-  for(var i = 0; i < d.length; i++){
-    error = getErr(d[i].trim());
-    val = getVal(d[i].trim());
-    vals[error] = val;
-  }
+    for(var i = 0; i < d.length; i++){
+      error = getErr(d[i].trim());
+        val = getVal(d[i].trim());
+        if(error && val){
+            vals[error] = val;
+        }else{
+            console.log("ERROR");
+        }
+    }
 }
 
 //extracts the error from the string
 function getErr(e){
-    err = e.substr(0, e.indexOf(' '));
-    return err;
+    return e.substr(0, e.indexOf(' '));
 }
 //extracts the percent from the string
 function getVal(v){
@@ -69,12 +72,12 @@ function getVal(v){
 //Main printing function.
 //Prints out the finalised list, ready for email.
 function printBoth(data, tholds){
+    _select("gimmeData").className = "fadeOut";
     res = document.getElementById("results")
     res.innerHTML = "";
     html = "";
     for(var i in data){
         if(data.hasOwnProperty(i)){
-          //document.write(i + "<br />");
             if(tholds[i] == null){
                 if(data[i] >= 100){
                     html += '<span style="background-color: yellow">ERROR ' + i + " ==> %" + data[i].trim();
@@ -83,7 +86,7 @@ function printBoth(data, tholds){
                 }else{
                     html += 'ERROR ' + i + " ==> " + data[i].trim() + "%";
                 }
-                    html += "</span>";
+                html += "</span>";
             }else if(data[i] >= (tholds[i])){
                 html += "<span style='background-color: yellow'>";
                 html += "ERROR " + i + " ==> " + data[i].trim() + "%";
@@ -96,22 +99,18 @@ function printBoth(data, tholds){
         }
     }
     res.innerHTML += html;
-    //_select("resultsHidden").value = html;
-    //dataSelect();
 }
 
-
-
+//Initiates formatting process
 function formatBtn(){
     dataArr = [];
     data = null;
     vals = [];
     //grab data from the input
     data = _select("errors").value;
-
-
     if(!data){
         console.log("kill");
+        _select("gimmeData").className = "fadeIn";
         return;
     }
     //get rid of the crap we don't need (formatting)
@@ -125,7 +124,8 @@ function formatBtn(){
 _select("format").addEventListener("click", formatBtn);
 
 //select and cache an object on the page by ID.
-// returns the object it found or null;
+// returns the object it found or an error string;
+// can check the return by using if(typeof _select("item") == 'object')
 function _select(sel){
     obj = document.getElementById(sel);
     if(!obj){
@@ -144,6 +144,7 @@ function dataSelect(){
 }
 
 //the input event is amazing. where has it been?? and how did I miss it?
+//any change on an input element, triggers this event.
 _select("errors").addEventListener("input" , autoFormat);
 
 function autoFormat(){
@@ -157,3 +158,7 @@ function clearResults(){
     _select("results").innerHTML = "";
     _select("errors").value = "";
 }
+
+//_select("gimmeData").className = "fadeOut";
+//warning.style.display="block";
+//warning.style.opacity=0.5;
