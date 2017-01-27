@@ -7,7 +7,7 @@ x fix spaces   percents
 */
 
 //use an associative array to make comparing simple.
-//global vars for simplicity... yes I know...
+
 var vals = [];
 var data;
 var dataArr = [];
@@ -125,7 +125,7 @@ _select("format").addEventListener("click", formatBtn);
 
 //select and cache an object on the page by ID.
 // returns the object it found or an error string;
-// can check the return by using if(typeof _select("item") == 'object')
+
 function _select(sel){
     obj = document.getElementById(sel);
     if(!obj){
