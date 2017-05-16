@@ -34,7 +34,8 @@ var defTholds = {
   USK	:	null,
   UNKNOWN   :   0.2,
   VAULT	:	0.1,
-  VRF	:	0.05
+  VRF	:	0.05,
+  OSG_USK : null
 }
 
 //normalise percents to whole number percents
