@@ -62,7 +62,7 @@ function data2array(d){
 
 //extracts the error from the string
 function getErr(e){
-    return e.substr(0, e.indexOf(' '));
+    return e.substr(0, e.indexOf(' ='));
 }
 //extracts the percent from the string
 function getVal(v){
