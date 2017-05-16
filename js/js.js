@@ -56,7 +56,7 @@ function data2array(d){
         if(error && val){
             vals[error] = val;
         }else{
-            console.log("ERROR");
+            console.log("ERROR" , error);
         }
     }
 }
