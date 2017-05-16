@@ -5,7 +5,8 @@ x fix spaces   percents
 
 ////
 */
-
+ 
+console.log("Helper v1");
 //use an associative array to make comparing simple.
 
 var vals = [];
