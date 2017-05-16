@@ -51,6 +51,7 @@ for(var p in defTholds){
 function data2array(d){
     for(var i = 0; i < d.length; i++){
       error = getErr(d[i].trim());
+      error = error.substr(0,error.length-1);
         val = getVal(d[i].trim());
         if(error && val){
             vals[error] = val;
