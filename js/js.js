@@ -5,7 +5,7 @@ x fix spaces   percents
 
 ////
 */
- 
+
 console.log("Helper v1");
 //use an associative array to make comparing simple.
 
@@ -55,7 +55,10 @@ function data2array(d){
       //error = error.substr(0,error.length-1);
         val = getVal(d[i].trim());
         if(error && val){
-            vals[error] = val;
+            if(!vals[error] || !val[error] == undefined){
+
+              vals[error] = val;
+            }
         }else{
             console.log("ERROR");
           console.log(error);
