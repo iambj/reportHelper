@@ -85,6 +85,9 @@ function printBoth(data, tholds){
     html = "";
     for(var i in data){
         if(data.hasOwnProperty(i)){
+            if(i == "USERS"){
+              continue;
+            }
             if(tholds[i] == null){
                 if(data[i] >= 100){
                     html += '<span style="background-color: yellow">ERROR ' + i + " ==> %" + data[i].trim();
