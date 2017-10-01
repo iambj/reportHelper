@@ -84,12 +84,13 @@ function printBoth(data, tholds){
     res.innerHTML = "";
     html = "";
     for(var i in data){
-        if(data.hasOwnProperty(i)){
-            console.log(i);
+        console.log(i);
             if(i == "USERS"){
               console.log("Skiping users", i);
               continue;
             }
+        if(data.hasOwnProperty(i)){
+
             if(tholds[i] == null){
                 if(data[i] >= 100){
                     html += '<span style="background-color: yellow">ERROR ' + i + " ==> %" + data[i].trim();
