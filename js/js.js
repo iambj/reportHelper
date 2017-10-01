@@ -87,8 +87,8 @@ function printBoth(data, tholds){
         
         if(data.hasOwnProperty(i)){
              if(i == "TOTAL"){
-                 html +=  i + "USERS ==> " + data[i].trim().replace("USERS ", "");
-               console.log("data", data[i]);
+                 html +=  i + "USERS ==> " + data[i].trim().replace("USERS", "");
+               console.log("data", data[i].replace("USERS", "");
               //continue;
             }
             else if(tholds[i] == null){
