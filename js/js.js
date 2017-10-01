@@ -85,6 +85,7 @@ function printBoth(data, tholds){
     html = "";
     for(var i in data){
         if(data.hasOwnProperty(i)){
+            console.log(i);
             if(i == "USERS"){
               console.log("Skiping users", i);
               continue;
