@@ -85,7 +85,7 @@ function printBoth(data, tholds){
     html = "";
     for(var i in data){
         console.log(i);
-            if(i == "USERS"){
+            if(i == "TOTAL"){
               console.log("Skiping users", i);
               continue;
             }
